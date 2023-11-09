@@ -7,12 +7,17 @@ const MyProvider = (props) => {
   const [players, setPlayers] = useState([]);
   const [result, setResult] = useState("");
 
+  const addPlayerHandler = (name) => {
+    setPlayers((prevState) => [...prevState, name]);
+  };
+
   return (
     <MyContext.Provider
       value={{
         stage: stage,
         players: players,
         result: result,
+        addPlayer: addPlayerHandler,
       }}
     >
       {props.children}

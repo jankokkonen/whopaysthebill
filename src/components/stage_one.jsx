@@ -11,8 +11,11 @@ const Stage1 = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const value = textInput.current.value;
+    context.addPlayer(value);
     textInput.current.value = "";
   };
+
+  console.log(context);
 
   return (
     <>
@@ -28,6 +31,29 @@ const Stage1 = () => {
         <Button className="miami" variant="primary" type="submit">
           Add player
         </Button>
+        {context.players && context.players.length > 0 ? (
+          <>
+            <hr />
+            <div>
+              <ul className="list-group">
+                {context.players.map((player, idx) => (
+                  <li
+                    key={idx}
+                    className="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+                  >
+                    {player}
+                    <span
+                      className="badge badge-danger"
+                      onClick={() => alert("delete")}
+                    >
+                      X
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        ) : null}
       </form>
     </>
   );

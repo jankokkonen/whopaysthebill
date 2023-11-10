@@ -12,11 +12,12 @@ const Stage1 = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const value = textInput.current.value;
-    const validate = validateInput(value);
+    const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+    const validate = validateInput(capitalizedValue);
 
     if (validate) {
       setError([false, ""]);
-      context.addPlayer(value);
+      context.addPlayer(capitalizedValue);
       textInput.current.value = "";
     }
   };

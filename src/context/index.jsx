@@ -25,14 +25,13 @@ const MyProvider = (props) => {
       setStage(2);
       setTimeout(() => {
         generateLooser();
-      });
+      }, 2000);
     }
   };
 
   const generateLooser = () => {
     let result = players[Math.floor(Math.random() * players.length)];
     setResult(result);
-    console.log(result);
   };
 
   return (

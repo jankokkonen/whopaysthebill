@@ -18,6 +18,23 @@ const MyProvider = (props) => {
     setPlayers(newArray);
   };
 
+  const nextHandler = () => {
+    if (players.length < 2) {
+      alert("Nope!");
+    } else {
+      setStage(2);
+      setTimeout(() => {
+        generateLooser();
+      });
+    }
+  };
+
+  const generateLooser = () => {
+    let result = players[Math.floor(Math.random() * players.length)];
+    setResult(result);
+    console.log(result);
+  };
+
   return (
     <MyContext.Provider
       value={{
@@ -26,6 +43,7 @@ const MyProvider = (props) => {
         result: result,
         addPlayer: addPlayerHandler,
         removePlayer: removePlayerHandler,
+        next: nextHandler,
       }}
     >
       {props.children}
